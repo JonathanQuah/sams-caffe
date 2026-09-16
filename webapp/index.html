@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Sam's Loyalty | Sam's Caffé</title>
+  <meta name="description" content="Sam's Caffé Loyalty — earn points, redeem rewards, and enjoy exclusive member promos." />
+  <meta name="theme-color" content="#3D2314" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Sam's Loyalty" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="images/logo.jpg" type="image/jpeg" />
+  <link rel="apple-touch-icon" href="images/logo.jpg" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════
+     ONBOARDING SCREEN
+══════════════════════════════════════════════════ -->
+<div id="onboard-screen">
+  <div class="onboard-bg">
+    <div class="onboard-logo-wrap">
+      <img src="images/logo.jpg" alt="Sam's Caffé logo" />
+      <div class="onboard-title">Sam's Loyalty</div>
+      <div class="onboard-sub">Earn • Redeem • Enjoy</div>
+    </div>
+
+    <div class="onboard-card">
+      <!-- Step 1: Phone + WhatsApp QR -->
+      <div id="login-step-1">
+        <h2>Join or Sign In</h2>
+        <p>Enter your phone number, then scan the WhatsApp QR to verify.</p>
+
+        <div class="form-group">
+          <label class="form-label" for="login-phone">Phone Number</label>
+          <input type="tel" id="login-phone" class="form-input" placeholder="+60 12-345 6789" />
+        </div>
+
+        <div class="wa-qr-box">
+          <div class="qr-img">
+            <!-- QR Code SVG placeholder -->
+            <svg viewBox="0 0 100 100" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+              <!-- Simple QR-like pattern -->
+              <rect width="100" height="100" fill="white"/>
+              <rect x="5" y="5" width="35" height="35" rx="4" fill="#25D366"/>
+              <rect x="11" y="11" width="23" height="23" rx="2" fill="white"/>
+              <rect x="16" y="16" width="13" height="13" rx="1" fill="#25D366"/>
+              <rect x="60" y="5" width="35" height="35" rx="4" fill="#25D366"/>
+              <rect x="66" y="11" width="23" height="23" rx="2" fill="white"/>
+              <rect x="71" y="16" width="13" height="13" rx="1" fill="#25D366"/>
+              <rect x="5" y="60" width="35" height="35" rx="4" fill="#25D366"/>
+              <rect x="11" y="66" width="23" height="23" rx="2" fill="white"/>
+              <rect x="16" y="71" width="13" height="13" rx="1" fill="#25D366"/>
+              <rect x="45" y="5" width="8" height="8" fill="#128C7E"/>
+              <rect x="45" y="18" width="8" height="8" fill="#128C7E"/>
+              <rect x="45" y="31" width="8" height="8" fill="#128C7E"/>
+              <rect x="58" y="45" width="8" height="8" fill="#128C7E"/>
+              <rect x="71" y="45" width="8" height="8" fill="#128C7E"/>
+              <rect x="84" y="45" width="8" height="8" fill="#128C7E"/>
+              <rect x="45" y="58" width="8" height="8" fill="#128C7E"/>
+              <rect x="58" y="58" width="8" height="8" fill="#128C7E"/>
+              <rect x="71" y="71" width="8" height="8" fill="#128C7E"/>
+              <rect x="84" y="71" width="8" height="8" fill="#128C7E"/>
+              <rect x="45" y="84" width="8" height="8" fill="#128C7E"/>
+              <rect x="71" y="84" width="8" height="8" fill="#128C7E"/>
+            </svg>
+          </div>
+          <div class="wa-qr-title">Scan with WhatsApp</div>
+          <div class="wa-qr-desc">Or tap below to open WhatsApp directly</div>
+        </div>
+
+        <button class="btn btn-primary" onclick="initiateWALogin()" id="wa-login-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Verify with WhatsApp
+        </button>
+
+        <div class="divider-text">or enter OTP manually below</div>
+      </div>
+
+      <!-- Step 2: OTP Entry -->
+      <div id="login-step-2" style="display:none;">
+        <h2>Enter OTP</h2>
+        <p>Enter the 6-digit code sent by Sam's Caffé on WhatsApp.</p>
+        <div class="otp-inputs">
+          <input type="text" class="otp-input" maxlength="1" inputmode="numeric" pattern="[0-9]*" id="otp-1" aria-label="OTP digit 1" />
+          <input type="text" class="otp-input" maxlength="1" inputmode="numeric" pattern="[0-9]*" id="otp-2" aria-label="OTP digit 2" />
+          <input type="text" class="otp-input" maxlength="1" inputmode="numeric" pattern="[0-9]*" id="otp-3" aria-label="OTP digit 3" />
+          <input type="text" class="otp-input" maxlength="1" inputmode="numeric" pattern="[0-9]*" id="otp-4" aria-label="OTP digit 4" />
+          <input type="text" class="otp-input" maxlength="1" inputmode="numeric" pattern="[0-9]*" id="otp-5" aria-label="OTP digit 5" />
+          <input type="text" class="otp-input" maxlength="1" inputmode="numeric" pattern="[0-9]*" id="otp-6" aria-label="OTP digit 6" />
+        </div>
+        <button class="btn btn-gold" onclick="verifyOTP()" id="verify-btn">Verify & Sign In</button>
+        <button class="btn btn-ghost mt-4" onclick="document.getElementById('login-step-1').style.display='block';document.getElementById('login-step-2').style.display='none';">← Back</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════
+     MAIN APP SCREEN
+══════════════════════════════════════════════════ -->
+<div id="app-screen" style="display:none;">
+
+  <!-- ── HOME PAGE ─────────────────────────────── -->
+  <div class="page" id="page-home">
+    <div class="app-header">
+      <div class="header-row">
+        <div class="header-logo">
+          <img src="images/logo.jpg" alt="Sam's Caffé" />
+          <div>
+            <div class="header-logo-name">Sam's Loyalty</div>
+            <div class="header-greeting" id="h-greeting">Welcome back!</div>
+          </div>
+        </div>
+        <div class="header-notif" aria-label="Notifications">
+          🔔<span class="notif-dot"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Points Card -->
+    <div style="padding:20px;">
+      <div class="card" style="background:linear-gradient(135deg, var(--brown-deep), var(--brown-rich));color:white;border-radius:var(--radius-xl);">
+        <div class="card-pad" style="padding:28px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+            <div>
+              <div style="font-size:0.72rem;letter-spacing:1.5px;text-transform:uppercase;opacity:0.6;margin-bottom:6px;">Your Points</div>
+              <div id="h-tier-badge"></div>
+            </div>
+            <div style="text-align:right;font-size:0.78rem;opacity:0.6;">Member ID<br><span style="color:var(--gold-light);font-weight:700;">#SC-001</span></div>
+          </div>
+
+          <div class="points-ring" id="h-points-ring" style="--pct:40%;">
+            <div class="points-ring-inner">
+              <div class="num" id="h-points">0</div>
+              <div class="lbl">POINTS</div>
+            </div>
+          </div>
+
+          <div style="margin-top:24px;">
+            <div style="display:flex;justify-content:space-between;font-size:0.78rem;opacity:0.65;margin-bottom:8px;">
+              <span>Progress to next tier</span>
+              <span id="h-tier-progress-text"></span>
+            </div>
+            <div class="progress-bar" style="background:rgba(255,255,255,0.15);">
+              <div class="progress-fill" id="h-progress-fill" style="width:0%"></div>
+            </div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px;">
+            <div style="background:rgba(255,255,255,0.08);border-radius:var(--radius-md);padding:14px;text-align:center;">
+              <div style="font-size:0.72rem;opacity:0.6;margin-bottom:4px;">RM1 Spent =</div>
+              <div style="font-family:var(--ff-heading);font-size:1.3rem;color:var(--gold-light);">1 pt</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.08);border-radius:var(--radius-md);padding:14px;text-align:center;">
+              <div style="font-size:0.72rem;opacity:0.6;margin-bottom:4px;">Free Coffee at</div>
+              <div style="font-family:var(--ff-heading);font-size:1.3rem;color:var(--gold-light);">100 pts</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="section-title">Quick Actions</div>
+    <div style="padding:0 20px 8px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
+      <button class="card card-pad" style="text-align:center;cursor:pointer;" onclick="showPage('promos')" id="qa-redeem">
+        <div style="font-size:1.6rem;margin-bottom:8px;">🎁</div>
+        <div style="font-size:0.75rem;font-weight:600;color:var(--text-dark);">Redeem</div>
+      </button>
+      <button class="card card-pad" style="text-align:center;cursor:pointer;" onclick="showEarnInfo()" id="qa-earn">
+        <div style="font-size:1.6rem;margin-bottom:8px;">☕</div>
+        <div style="font-size:0.75rem;font-weight:600;color:var(--text-dark);">Earn Points</div>
+      </button>
+      <a href="../website/menu.html" class="card card-pad" style="text-align:center;" id="qa-menu">
+        <div style="font-size:1.6rem;margin-bottom:8px;">🍽</div>
+        <div style="font-size:0.75rem;font-weight:600;color:var(--text-dark);">View Menu</div>
+      </a>
+    </div>
+
+    <!-- Recent Activity -->
+    <div class="section-title">Recent Activity</div>
+    <div style="padding:0 20px;">
+      <div class="card card-pad" id="h-activity">
+        <!-- Populated by JS -->
+      </div>
+      <button class="btn btn-ghost btn-sm mt-4" onclick="showPage('activity')" id="view-all-activity" style="width:100%;">View all activity →</button>
+    </div>
+
+    <!-- Promo Banner -->
+    <div style="padding:20px 20px 0;">
+      <div class="card" style="background:linear-gradient(135deg,var(--gold),var(--gold-light));overflow:hidden;position:relative;">
+        <div style="position:absolute;top:-30px;right:-30px;width:120px;height:120px;background:rgba(255,255,255,0.15);border-radius:50%;"></div>
+        <div class="card-pad" style="position:relative;">
+          <div style="font-size:0.72rem;font-weight:700;color:var(--brown-deep);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">🎉 Active Promo</div>
+          <div style="font-family:var(--ff-heading);font-size:1.1rem;color:var(--brown-deep);margin-bottom:6px;">2x Points This Weekend!</div>
+          <div style="font-size:0.8rem;color:var(--brown-rich);">Spend at Sam's this Saturday & Sunday and earn double points on every RM.</div>
+          <button class="btn btn-primary btn-sm mt-4 btn-inline" onclick="showPage('promos')" id="promo-banner-btn">See All Promos</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PROMOS PAGE ────────────────────────────── -->
+  <div class="page" id="page-promos">
+    <div class="app-header">
+      <div class="header-row">
+        <h2>Rewards & Promos</h2>
+        <div style="font-size:0.82rem;color:var(--text-soft);">
+          <span id="promo-pts-display">--- pts</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding:16px 20px 4px;">
+      <div style="background:var(--cream-dark);border-radius:var(--radius-md);padding:14px 16px;font-size:0.85rem;color:var(--text-mid);">
+        💡 Earn <strong>1 point per RM1</strong> spent at Sam's Caffé. Use your points to redeem exclusive rewards below.
+      </div>
+    </div>
+
+    <div class="section-title">Available Rewards</div>
+    <div style="padding:0 20px;" id="promos-list">
+      <!-- Populated by JS -->
+    </div>
+  </div>
+
+  <!-- ── ACTIVITY PAGE ──────────────────────────── -->
+  <div class="page" id="page-activity">
+    <div class="app-header">
+      <div class="header-row">
+        <h2>My Activity</h2>
+        <div style="font-size:0.82rem;color:var(--text-soft);">All Transactions</div>
+      </div>
+    </div>
+    <div style="padding:20px;">
+      <div class="card card-pad" id="full-activity">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PROFILE PAGE ───────────────────────────── -->
+  <div class="page" id="page-profile">
+    <div class="app-header">
+      <div class="header-row">
+        <h2>My Profile</h2>
+        <button style="font-size:0.82rem;color:var(--text-soft);" onclick="showLogoutConfirm()" id="logout-btn">Log out</button>
+      </div>
+    </div>
+
+    <!-- Profile Card -->
+    <div style="padding:20px;">
+      <div class="card" style="background:linear-gradient(135deg, var(--brown-deep), var(--brown-rich));">
+        <div class="card-pad" style="text-align:center;padding:32px 24px;">
+          <div style="width:72px;height:72px;background:rgba(201,169,110,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 16px;">👤</div>
+          <div style="font-family:var(--ff-heading);font-size:1.4rem;color:var(--white);margin-bottom:6px;" id="prof-name">—</div>
+          <div style="font-size:0.85rem;color:rgba(255,255,255,0.6);margin-bottom:12px;" id="prof-phone">—</div>
+          <div id="prof-tier"></div>
+          <div style="font-size:0.75rem;color:rgba(255,255,255,0.4);margin-top:8px;" id="prof-joined"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div style="padding:0 20px 16px;display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+      <div class="card card-pad" style="text-align:center;">
+        <div style="font-family:var(--ff-heading);font-size:1.6rem;color:var(--brown-rich);" id="prof-points">—</div>
+        <div style="font-size:0.75rem;color:var(--text-soft);">Current Balance</div>
+      </div>
+      <div class="card card-pad" style="text-align:center;">
+        <div style="font-family:var(--ff-heading);font-size:1.6rem;color:var(--brown-rich);">1,240</div>
+        <div style="font-size:0.75rem;color:var(--text-soft);">Lifetime Points</div>
+      </div>
+    </div>
+
+    <!-- Settings -->
+    <div class="section-title">Settings</div>
+    <div style="padding:0 20px;">
+      <div class="card">
+        <div style="padding:16px 20px;border-bottom:1px solid var(--cream-dark);display:flex;justify-content:space-between;align-items:center;">
+          <span style="font-size:0.9rem;">Notifications</span>
+          <div style="width:44px;height:24px;background:var(--brown-rich);border-radius:12px;position:relative;cursor:pointer;" id="notif-toggle">
+            <div style="position:absolute;width:18px;height:18px;background:white;border-radius:50%;top:3px;right:3px;transition:0.2s;"></div>
+          </div>
+        </div>
+        <div style="padding:16px 20px;border-bottom:1px solid var(--cream-dark);display:flex;justify-content:space-between;align-items:center;">
+          <span style="font-size:0.9rem;">Language</span>
+          <span style="font-size:0.82rem;color:var(--text-soft);">English</span>
+        </div>
+        <a href="../website/index.html" style="padding:16px 20px;display:flex;justify-content:space-between;align-items:center;color:var(--brown-rich);">
+          <span style="font-size:0.9rem;">Visit Sam's Caffé Website</span>
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Tier Progress -->
+    <div class="section-title">Tier Progress</div>
+    <div style="padding:0 20px 24px;">
+      <div class="card card-pad">
+        <div style="display:flex;justify-content:space-between;margin-bottom:16px;">
+          <div style="text-align:center;">
+            <div style="font-size:1.4rem;">🥉</div>
+            <div style="font-size:0.7rem;color:var(--text-soft);">Bronze<br>0 pts</div>
+          </div>
+          <div style="flex:1;display:flex;align-items:center;padding:0 12px;">
+            <div class="progress-bar"><div class="progress-fill" style="width:100%"></div></div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-size:1.4rem;">🥈</div>
+            <div style="font-size:0.7rem;color:var(--text-soft);">Silver<br>500 pts</div>
+          </div>
+          <div style="flex:1;display:flex;align-items:center;padding:0 12px;">
+            <div class="progress-bar"><div class="progress-fill" style="width:60%"></div></div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-size:1.4rem;">🥇</div>
+            <div style="font-size:0.7rem;color:var(--text-soft);">Gold<br>1500 pts</div>
+          </div>
+        </div>
+        <p style="font-size:0.8rem;color:var(--text-soft);text-align:center;">You are <strong style="color:var(--brown-rich);">260 pts</strong> away from Gold tier 🥇</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Bottom Navigation ─────────────────────── -->
+  <nav class="bottom-nav" aria-label="App navigation">
+    <button class="nav-tab active" id="tab-home" onclick="showPage('home')">
+      <span class="tab-icon">🏠</span>
+      <span>Home</span>
+    </button>
+    <button class="nav-tab" id="tab-promos" onclick="showPage('promos')">
+      <span class="tab-icon">🎁</span>
+      <span>Rewards</span>
+    </button>
+    <button class="nav-tab" id="tab-activity" onclick="showPage('activity');loadActivity()">
+      <span class="tab-icon">📋</span>
+      <span>Activity</span>
+    </button>
+    <button class="nav-tab" id="tab-profile" onclick="showPage('profile')">
+      <span class="tab-icon">👤</span>
+      <span>Profile</span>
+    </button>
+  </nav>
+
+</div><!-- /app-screen -->
+
+<!-- ── Redeem Confirmation Modal ─────────────────── -->
+<div class="modal-overlay" id="redeem-modal" role="dialog" aria-modal="true" aria-labelledby="redeem-modal-title">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div style="text-align:center;margin-bottom:24px;">
+      <div style="font-size:3rem;margin-bottom:12px;">🎁</div>
+      <h2 id="redeem-modal-title">Redeem Reward</h2>
+      <p id="redeem-modal-pts" style="font-size:1.2rem;font-family:var(--ff-heading);color:var(--brown-rich);margin:8px 0;"></p>
+      <p id="redeem-modal-balance" style="font-size:0.82rem;color:var(--text-soft);"></p>
+    </div>
+    <div style="background:var(--cream);border-radius:var(--radius-md);padding:16px;margin-bottom:20px;font-size:0.85rem;color:var(--text-mid);">
+      ℹ️ Show the confirmation code to our staff at the counter to redeem.
+    </div>
+    <button class="btn btn-gold mb-4" onclick="confirmRedeem()" id="confirm-redeem-btn">Confirm Redeem</button>
+    <button class="btn btn-ghost" onclick="closeRedeemModal()" id="cancel-redeem-btn">Cancel</button>
+  </div>
+</div>
+
+<!-- ── Success Modal ──────────────────────────────── -->
+<div class="modal-overlay" id="success-modal" role="dialog" aria-modal="true">
+  <div class="modal-sheet" style="text-align:center;">
+    <div class="modal-handle"></div>
+    <div style="font-size:3.5rem;margin-bottom:16px;">🎉</div>
+    <h2>Redeemed!</h2>
+    <p style="margin:8px 0 20px;" id="success-item"></p>
+    <div style="background:var(--brown-deep);border-radius:var(--radius-lg);padding:24px;margin:16px 0;">
+      <div style="font-size:0.72rem;color:rgba(255,255,255,0.5);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;">Your Code</div>
+      <div id="success-code" style="font-family:monospace;font-size:2rem;color:var(--gold);letter-spacing:4px;font-weight:700;"></div>
+      <div style="font-size:0.75rem;color:rgba(255,255,255,0.4);margin-top:10px;">Show this to staff at the counter</div>
+    </div>
+    <div style="font-size:0.85rem;color:var(--text-soft);margin-bottom:24px;">New balance: <strong id="success-new-pts" style="color:var(--brown-rich);"></strong></div>
+    <button class="btn btn-primary" onclick="document.getElementById('success-modal').classList.remove('open')" id="close-success-btn">Done</button>
+  </div>
+</div>
+
+<!-- ── Earn Info Modal ───────────────────────────── -->
+<div class="modal-overlay" id="earn-modal" role="dialog" aria-modal="true">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <h2 style="margin-bottom:6px;">How to Earn Points</h2>
+    <p style="margin-bottom:24px;font-size:0.85rem;color:var(--text-soft);">It's simple — dine at Sam's, earn rewards.</p>
+    <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:24px;">
+      <div style="display:flex;gap:14px;align-items:center;">
+        <div style="width:44px;height:44px;min-width:44px;background:rgba(92,61,46,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;">💵</div>
+        <div><div style="font-weight:600;font-size:0.9rem;">Spend RM1 = 1 Point</div><div style="font-size:0.78rem;color:var(--text-soft);">Every ringgit you spend earns you 1 loyalty point</div></div>
+      </div>
+      <div style="display:flex;gap:14px;align-items:center;">
+        <div style="width:44px;height:44px;min-width:44px;background:rgba(201,169,110,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;">📸</div>
+        <div><div style="font-weight:600;font-size:0.9rem;">Show QR at Counter</div><div style="font-size:0.78rem;color:var(--text-soft);">Ask staff to scan your loyalty QR when paying</div></div>
+      </div>
+      <div style="display:flex;gap:14px;align-items:center;">
+        <div style="width:44px;height:44px;min-width:44px;background:rgba(74,103,65,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;">⚡</div>
+        <div><div style="font-weight:600;font-size:0.9rem;">Points Added Instantly</div><div style="font-size:0.78rem;color:var(--text-soft);">Your balance updates right after each visit</div></div>
+      </div>
+    </div>
+    <button class="btn btn-primary" onclick="document.getElementById('earn-modal').classList.remove('open')" id="close-earn-btn">Got It!</button>
+  </div>
+</div>
+
+<!-- ── Toast ─────────────────────────────────────── -->
+<div class="toast" id="toast" role="alert" aria-live="polite"></div>
+
+<script src="js/app.js"></script>
+<script>
+  // Register Service Worker for PWA
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js').catch(() => {});
+  }
+</script>
+<script>
+  function showEarnInfo() {
+    document.getElementById('earn-modal').classList.add('open');
+    document.querySelectorAll('.modal-overlay').forEach(m => {
+      m.addEventListener('click', (e) => { if (e.target === m) m.classList.remove('open'); });
+    });
+  }
+
+  function loadActivity() {
+    const feed = document.getElementById('full-activity');
+    if (!feed || !AppState.user) return;
+    feed.innerHTML = AppState.user.transactions.map(t => `
+      <div class="activity-item">
+        <div class="activity-icon ${t.type}">${t.type === 'earn' ? '💰' : '🎁'}</div>
+        <div class="activity-info">
+          <div class="activity-title">${t.desc}</div>
+          <div class="activity-date">${t.date}</div>
+        </div>
+        <div class="activity-pts ${t.type}">${t.pts > 0 ? '+' : ''}${t.pts} pts</div>
+      </div>
+    `).join('');
+  }
+
+  function showLogoutConfirm() {
+    if (confirm('Are you sure you want to log out?')) {
+      AppState.logout();
+      document.getElementById('app-screen').style.display = 'none';
+      document.getElementById('onboard-screen').style.display = 'block';
+      document.getElementById('login-step-1').style.display = 'block';
+      document.getElementById('login-step-2').style.display = 'none';
+    }
+  }
+
+  // Update promo page pts display
+  const origShowPage = showPage;
+  window.showPage = function(pageId) {
+    origShowPage(pageId);
+    if (pageId === 'promos' && AppState.user) {
+      document.getElementById('promo-pts-display').textContent = AppState.user.points + ' pts';
+    }
+  };
+</script>
+</body>
+</html>

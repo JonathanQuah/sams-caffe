@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Event Space | Sam's Caffé Puchong</title>
+  <meta name="description" content="Host your next birthday, corporate lunch or private gathering at Sam's Caffé event space in Puchong. Up to 60 pax. Enquire now." />
+  <link rel="icon" href="images/logo.jpg" type="image/jpeg" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .pkg-card {
+      background: var(--white);
+      border-radius: var(--radius-xl);
+      padding: 36px 32px;
+      box-shadow: var(--shadow-sm);
+      border: 1.5px solid var(--cream-dark);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .pkg-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 4px;
+      background: var(--cream-dark);
+    }
+    .pkg-card.featured::before { background: linear-gradient(90deg, var(--gold), var(--gold-light)); }
+    .pkg-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+    .pkg-card.featured { border-color: rgba(201,169,110,0.4); }
+    .pkg-badge {
+      position: absolute; top: 20px; right: 20px;
+      padding: 4px 12px;
+      background: var(--gold);
+      color: var(--brown-deep);
+      font-size: 0.72rem; font-weight: 700;
+      border-radius: 50px;
+      letter-spacing: 0.5px;
+    }
+    .pkg-price {
+      font-family: var(--ff-heading);
+      font-size: 2.4rem;
+      color: var(--brown-deep);
+      margin: 16px 0 4px;
+    }
+    .pkg-price span { font-size: 1rem; color: var(--text-soft); font-family: var(--ff-body); }
+    .pkg-includes { margin: 24px 0; }
+    .pkg-includes li {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--cream-dark);
+      font-size: 0.9rem;
+      color: var(--text-mid);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .pkg-includes li::before { content: '✓'; color: var(--gold); font-weight: 700; }
+    .feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .feat-item {
+      text-align: center; padding: 32px 20px;
+      background: var(--white); border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+    .feat-item:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .feat-icon { font-size: 2.4rem; margin-bottom: 16px; }
+    .feat-item h3 { font-size: 1rem; margin-bottom: 8px; }
+    .feat-item p { font-size: 0.85rem; color: var(--text-soft); }
+    .inquiry-form {
+      background: var(--white);
+      border-radius: var(--radius-xl);
+      padding: 48px;
+      box-shadow: var(--shadow-md);
+    }
+    @media(max-width:768px) {
+      .feat-grid { grid-template-columns: 1fr 1fr; }
+      .inquiry-form { padding: 32px 24px; }
+    }
+    @media(max-width:480px) { .feat-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <nav id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="images/logo.jpg" alt="Sam's Caffé logo" />
+        <div class="nav-logo-text"><span class="brand">Sam's Caffé</span><span class="sub">Est. Puchong</span></div>
+      </a>
+      <ul class="nav-links" role="list">
+        <li><a href="index.html">Home</a></li><li><a href="menu.html">Menu</a></li>
+        <li><a href="events.html">Event Space</a></li><li><a href="gallery.html">Gallery</a></li>
+        <li><a href="about.html">About</a></li><li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button id="langBtn" class="nav-lang-btn">BM</button>
+        <a href="../webapp/index.html" class="btn btn-gold nav-cta">☕ My Points</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html">Home</a><a href="menu.html">Menu</a><a href="events.html">Event Space</a>
+    <a href="gallery.html">Gallery</a><a href="about.html">About</a><a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+    <a href="../webapp/index.html" class="btn btn-gold" style="margin-top:8px;justify-content:center;">☕ My Loyalty Points</a>
+  </nav>
+
+  <section class="page-hero">
+    <div class="page-hero-bg" style="background-image:url('images/event-space.jpg')"></div>
+    <div class="container page-hero-content">
+      <div class="breadcrumb"><a href="index.html">Home</a> <span>/</span> <span data-lang="en">Event Space</span><span data-lang="bm">Ruang Acara</span></div>
+      <span class="script">Host With Us</span>
+      <h1 data-lang="en">Our Event Space</h1>
+      <h1 data-lang="bm">Ruang Acara Kami</h1>
+      <p data-lang="en">Celebrate milestones, host meetings & create memories in our charming, fully-equipped event space.</p>
+      <p data-lang="bm">Raikan pencapaian, anjurkan mesyuarat & cipta kenangan di ruang acara kami yang lengkap.</p>
+    </div>
+  </section>
+
+  <main>
+    <!-- Features -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="script">What We Offer</span>
+          <h2 data-lang="en">Everything You Need</h2>
+          <h2 data-lang="bm">Semua Yang Anda Perlukan</h2>
+          <div class="divider"></div>
+        </div>
+        <div class="feat-grid">
+          <div class="feat-item reveal"><div class="feat-icon">👥</div>
+            <h3 data-lang="en">Up to 60 Pax</h3><h3 data-lang="bm">Sehingga 60 Orang</h3>
+            <p data-lang="en">Flexible seating for intimate dinners to corporate lunches</p>
+            <p data-lang="bm">Tempat duduk fleksibel untuk makan malam hingga makan tengah hari korporat</p>
+          </div>
+          <div class="feat-item reveal"><div class="feat-icon">🎵</div>
+            <h3 data-lang="en">AV Equipment</h3><h3 data-lang="bm">Peralatan AV</h3>
+            <p data-lang="en">Projector, screen, Bluetooth speakers & microphone included</p>
+            <p data-lang="bm">Projektor, skrin, pembesar suara Bluetooth & mikrofon disertakan</p>
+          </div>
+          <div class="feat-item reveal"><div class="feat-icon">🍽</div>
+            <h3 data-lang="en">Custom Menu</h3><h3 data-lang="bm">Menu Tersuai</h3>
+            <p data-lang="en">Select from our set menus or work with our chef on a custom spread</p>
+            <p data-lang="bm">Pilih dari set menu kami atau bekerjasama dengan chef kami</p>
+          </div>
+          <div class="feat-item reveal"><div class="feat-icon">🎨</div>
+            <h3 data-lang="en">Décor Setup</h3><h3 data-lang="bm">Hiasan Ruang</h3>
+            <p data-lang="en">Basic table décor included; custom theming available on request</p>
+            <p data-lang="bm">Hiasan meja asas disertakan; tema tersuai atas permintaan</p>
+          </div>
+          <div class="feat-item reveal"><div class="feat-icon">🚗</div>
+            <h3 data-lang="en">Easy Parking</h3><h3 data-lang="bm">Tempat Letak Kenderaan</h3>
+            <p data-lang="en">Ample parking available at Taman Puchong Utama</p>
+            <p data-lang="bm">Tempat letak kenderaan yang luas di Taman Puchong Utama</p>
+          </div>
+          <div class="feat-item reveal"><div class="feat-icon">📅</div>
+            <h3 data-lang="en">Flexible Slots</h3><h3 data-lang="bm">Slot Fleksibel</h3>
+            <p data-lang="en">Morning, afternoon & evening slots on weekdays and weekends</p>
+            <p data-lang="bm">Slot pagi, tengah hari & malam pada hari biasa dan hujung minggu</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Event Space Image -->
+    <section class="section-sm" style="background:var(--cream);">
+      <div class="container">
+        <div style="border-radius:var(--radius-xl);overflow:hidden;box-shadow:var(--shadow-xl);">
+          <img src="images/event-space.jpg" alt="Sam's Caffé event space" style="width:100%;max-height:520px;object-fit:cover;" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Packages -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="script">Event Packages</span>
+          <h2 data-lang="en">Choose Your Package</h2>
+          <h2 data-lang="bm">Pilih Pakej Anda</h2>
+          <div class="divider"></div>
+          <p data-lang="en">All packages include complimentary room setup & basic table décor. Add-ons available.</p>
+          <p data-lang="bm">Semua pakej termasuk persediaan bilik percuma & hiasan meja asas. Tambahan tersedia.</p>
+        </div>
+        <div class="grid-3">
+          <div class="pkg-card reveal">
+            <span class="card-tag" data-lang="en">Weekday</span>
+            <span class="card-tag" data-lang="bm">Hari Biasa</span>
+            <h3 data-lang="en">Cozy Gathering</h3>
+            <h3 data-lang="bm">Perjumpaan Mesra</h3>
+            <div class="pkg-price">RM 800 <span data-lang="en">/ session</span><span data-lang="bm">/ sesi</span></div>
+            <ul class="pkg-includes">
+              <li data-lang="en">Up to 25 guests</li><li data-lang="bm">Sehingga 25 tetamu</li>
+              <li data-lang="en">3 hour venue hire</li><li data-lang="bm">Sewa tempat 3 jam</li>
+              <li data-lang="en">Welcome drinks (non-alcoholic)</li><li data-lang="bm">Minuman alu-aluan</li>
+              <li data-lang="en">Basic table setup</li><li data-lang="bm">Persediaan meja asas</li>
+            </ul>
+            <a href="#enquiry-form" class="btn btn-outline" style="width:100%;justify-content:center;" id="pkg-cozy-btn">
+              <span data-lang="en">Enquire Now</span><span data-lang="bm">Hubungi Sekarang</span>
+            </a>
+          </div>
+          <div class="pkg-card featured reveal">
+            <span class="pkg-badge" data-lang="en">Most Popular</span>
+            <span class="pkg-badge" data-lang="bm">Paling Popular</span>
+            <span class="card-tag" data-lang="en">Full Day</span>
+            <span class="card-tag" data-lang="bm">Sepanjang Hari</span>
+            <h3 data-lang="en">Celebration Package</h3>
+            <h3 data-lang="bm">Pakej Perayaan</h3>
+            <div class="pkg-price">RM 1,800 <span data-lang="en">/ session</span><span data-lang="bm">/ sesi</span></div>
+            <ul class="pkg-includes">
+              <li data-lang="en">Up to 50 guests</li><li data-lang="bm">Sehingga 50 tetamu</li>
+              <li data-lang="en">5 hour venue hire</li><li data-lang="bm">Sewa tempat 5 jam</li>
+              <li data-lang="en">Buffet set meal per pax</li><li data-lang="bm">Makan buffet set per orang</li>
+              <li data-lang="en">Custom décor theme</li><li data-lang="bm">Tema hiasan tersuai</li>
+              <li data-lang="en">AV equipment included</li><li data-lang="bm">Peralatan AV disertakan</li>
+              <li data-lang="en">Dedicated event coordinator</li><li data-lang="bm">Pengurus acara peribadi</li>
+            </ul>
+            <a href="#enquiry-form" class="btn btn-gold" style="width:100%;justify-content:center;" id="pkg-celebration-btn">
+              <span data-lang="en">Enquire Now</span><span data-lang="bm">Hubungi Sekarang</span>
+            </a>
+          </div>
+          <div class="pkg-card reveal">
+            <span class="card-tag" data-lang="en">Corporate</span>
+            <span class="card-tag" data-lang="bm">Korporat</span>
+            <h3 data-lang="en">Corporate Package</h3>
+            <h3 data-lang="bm">Pakej Korporat</h3>
+            <div class="pkg-price">RM 2,500 <span data-lang="en">/ session</span><span data-lang="bm">/ sesi</span></div>
+            <ul class="pkg-includes">
+              <li data-lang="en">Up to 60 guests</li><li data-lang="bm">Sehingga 60 tetamu</li>
+              <li data-lang="en">Full day hire (8 hrs)</li><li data-lang="bm">Sewa sepanjang hari (8 jam)</li>
+              <li data-lang="en">Corporate lunch/dinner set</li><li data-lang="bm">Set makan siang/malam korporat</li>
+              <li data-lang="en">Full AV & projector setup</li><li data-lang="bm">Persediaan AV & projektor penuh</li>
+              <li data-lang="en">Branding placement available</li><li data-lang="bm">Penempatan jenama tersedia</li>
+            </ul>
+            <a href="#enquiry-form" class="btn btn-outline" style="width:100%;justify-content:center;" id="pkg-corporate-btn">
+              <span data-lang="en">Enquire Now</span><span data-lang="bm">Hubungi Sekarang</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Enquiry Form -->
+    <section class="section-sm" style="background:var(--cream);" id="enquiry-form">
+      <div class="container" style="max-width:720px;">
+        <div class="section-header reveal">
+          <span class="script">Let's Plan Together</span>
+          <h2 data-lang="en">Send an Enquiry</h2>
+          <h2 data-lang="bm">Hantar Pertanyaan</h2>
+          <div class="divider"></div>
+        </div>
+        <div class="inquiry-form reveal">
+          <form id="event-enquiry-form" onsubmit="submitEnquiry(event)">
+            <div class="grid-2">
+              <div class="form-group">
+                <label for="evt-name" data-lang="en">Full Name</label>
+                <label for="evt-name" data-lang="bm">Nama Penuh</label>
+                <input type="text" id="evt-name" class="form-control" required placeholder="e.g. Ahmad Rizal" />
+              </div>
+              <div class="form-group">
+                <label for="evt-phone" data-lang="en">Phone Number</label>
+                <label for="evt-phone" data-lang="bm">Nombor Telefon</label>
+                <input type="tel" id="evt-phone" class="form-control" required placeholder="+60 12-345 6789" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="evt-email">Email</label>
+              <input type="email" id="evt-email" class="form-control" required placeholder="your@email.com" />
+            </div>
+            <div class="grid-2">
+              <div class="form-group">
+                <label for="evt-type" data-lang="en">Event Type</label>
+                <label for="evt-type" data-lang="bm">Jenis Acara</label>
+                <select id="evt-type" class="form-control">
+                  <option value="" data-lang="en">Select type</option>
+                  <option value="birthday" data-lang="en">Birthday Party</option>
+                  <option value="corporate" data-lang="en">Corporate Lunch/Dinner</option>
+                  <option value="meeting" data-lang="en">Meeting / Workshop</option>
+                  <option value="anniversary" data-lang="en">Anniversary</option>
+                  <option value="other" data-lang="en">Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="evt-pax" data-lang="en">No. of Guests</label>
+                <label for="evt-pax" data-lang="bm">Bilangan Tetamu</label>
+                <input type="number" id="evt-pax" class="form-control" min="5" max="60" placeholder="e.g. 30" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="evt-date" data-lang="en">Preferred Date</label>
+              <label for="evt-date" data-lang="bm">Tarikh Pilihan</label>
+              <input type="date" id="evt-date" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label for="evt-msg" data-lang="en">Additional Notes</label>
+              <label for="evt-msg" data-lang="bm">Nota Tambahan</label>
+              <textarea id="evt-msg" class="form-control" placeholder="Tell us about your event, special requirements, theme ideas..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-gold" style="width:100%;justify-content:center;" id="enquiry-submit-btn">
+              <span data-lang="en">Send Enquiry via WhatsApp</span>
+              <span data-lang="bm">Hantar Pertanyaan via WhatsApp</span>
+            </button>
+          </form>
+          <div id="form-success" style="display:none;text-align:center;padding:32px;">
+            <div style="font-size:3rem;margin-bottom:16px;">✅</div>
+            <h3 data-lang="en">Enquiry Sent!</h3>
+            <h3 data-lang="bm">Pertanyaan Dihantar!</h3>
+            <p data-lang="en">We'll get back to you within 24 hours. Looking forward to hosting you!</p>
+            <p data-lang="bm">Kami akan menghubungi anda dalam masa 24 jam. Kami menantikan kehadiran anda!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container"><div class="footer-bottom" style="border-top:none;padding:32px 0;">
+      <p>© 2026 <span class="gold-text">Sam's Caffé</span>. All rights reserved.</p>
+      <div style="display:flex;gap:24px;">
+        <a href="index.html" style="color:rgba(255,255,255,0.6);font-size:0.85rem;">Home</a>
+        <a href="menu.html" style="color:rgba(255,255,255,0.6);font-size:0.85rem;">Menu</a>
+        <a href="contact.html" style="color:rgba(255,255,255,0.6);font-size:0.85rem;">Contact</a>
+      </div>
+    </div></div>
+  </footer>
+  <a href="https://wa.me/60123456789" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+  <script src="js/main.js"></script>
+  <script>
+    function submitEnquiry(e) {
+      e.preventDefault();
+      const name = document.getElementById('evt-name').value;
+      const phone = document.getElementById('evt-phone').value;
+      const type = document.getElementById('evt-type').value;
+      const pax = document.getElementById('evt-pax').value;
+      const date = document.getElementById('evt-date').value;
+      const msg = document.getElementById('evt-msg').value;
+      const text = `Hi Sam's Caffé! I'd like to enquire about your event space.%0A%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*Event Type:* ${type}%0A*Guests:* ${pax}%0A*Date:* ${date}%0A*Notes:* ${msg}`;
+      window.open(`https://wa.me/60123456789?text=${text}`, '_blank');
+      document.getElementById('event-enquiry-form').style.display = 'none';
+      document.getElementById('form-success').style.display = 'block';
+    }
+  </script>
+</body>
+</html>

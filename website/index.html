@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sam's Caffé | Cozy Café & Event Space in Puchong</title>
+  <meta name="description" content="Sam's Caffé — your favourite neighbourhood café in Puchong. Enjoy handcrafted coffee, Western and Malaysian cuisine, and a charming event space for every occasion." />
+  <meta property="og:title" content="Sam's Caffé | Puchong" />
+  <meta property="og:description" content="Handcrafted coffee, Malaysian favourites & a cozy event space." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="images/logo.jpg" type="image/jpeg" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ── Home-specific styles ── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex; align-items: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: url('images/hero.jpg') center/cover no-repeat;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg,
+        rgba(30,12,4,0.75) 0%,
+        rgba(60,35,20,0.55) 50%,
+        rgba(30,12,4,0.4) 100%);
+    }
+    .hero-content {
+      position: relative; z-index: 1;
+      max-width: 680px;
+      padding: calc(var(--nav-height) + 48px) 0 96px;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 8px 18px;
+      background: rgba(201,169,110,0.2);
+      border: 1px solid rgba(201,169,110,0.45);
+      border-radius: 50px;
+      color: var(--gold-light);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+      backdrop-filter: blur(4px);
+    }
+    .hero-eyebrow::before { content: '✦'; font-size: 0.7rem; }
+    .hero h1 { color: var(--white); margin-bottom: 24px; font-size: clamp(2.8rem, 6vw, 5rem); }
+    .hero h1 em { font-style: italic; color: var(--gold-light); }
+    .hero p { color: rgba(255,255,255,0.8); font-size: 1.15rem; max-width: 500px; margin-bottom: 40px; }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+    .hero-scroll {
+      position: absolute; bottom: 40px; left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      color: rgba(255,255,255,0.5);
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      animation: bounce 2s infinite;
+    }
+    .hero-scroll::after {
+      content: '';
+      width: 1px; height: 48px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.5), transparent);
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(8px); }
+    }
+
+    /* ── Stats strip ── */
+    .stats-strip {
+      background: var(--brown-deep);
+      padding: 0;
+    }
+    .stats-inner {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      divide: 1px solid;
+    }
+    .stat-item {
+      padding: 36px 24px;
+      text-align: center;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-number {
+      font-family: var(--ff-heading);
+      font-size: 2.4rem;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+    .stat-label { font-size: 0.82rem; color: rgba(255,255,255,0.55); letter-spacing: 0.5px; }
+
+    /* ── About snippet ── */
+    .about-img-wrap {
+      position: relative;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      aspect-ratio: 4/5;
+      box-shadow: var(--shadow-xl);
+    }
+    .about-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+    .about-badge {
+      position: absolute; bottom: -20px; right: -20px;
+      width: 130px; height: 130px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      box-shadow: var(--shadow-lg);
+      border: 4px solid var(--white);
+    }
+    .about-badge .num { font-family: var(--ff-heading); font-size: 2rem; color: var(--brown-deep); font-weight: 700; }
+    .about-badge .label { font-size: 0.7rem; color: var(--brown-rich); font-weight: 600; text-align: center; line-height: 1.2; }
+    .about-text { display: flex; flex-direction: column; justify-content: center; }
+    .about-text .script { font-size: 1.6rem; }
+    .about-text h2 { margin: 8px 0 20px; }
+    .about-text p { margin-bottom: 16px; }
+    .about-checks { display: flex; flex-direction: column; gap: 12px; margin: 24px 0 36px; }
+    .about-checks li {
+      display: flex; align-items: center; gap: 12px;
+      font-size: 0.95rem; color: var(--text-mid);
+    }
+    .about-checks li::before {
+      content: '✓';
+      width: 24px; height: 24px; min-width: 24px;
+      background: rgba(201,169,110,0.2);
+      color: var(--brown-rich);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.8rem; font-weight: 700;
+    }
+
+    /* ── Featured Menu ── */
+    .menu-section { background: var(--cream); }
+    .menu-card-price {
+      font-family: var(--ff-heading);
+      font-size: 1.3rem;
+      color: var(--brown-rich);
+      font-weight: 600;
+    }
+    .menu-card-desc { font-size: 0.88rem; color: var(--text-soft); margin: 8px 0 0; }
+    .menu-card-img { aspect-ratio: 1/1; transition: var(--transition-slow); }
+    .card:hover .menu-card-img { transform: scale(1.05); }
+
+    /* ── Event Space Teaser ── */
+    .events-section {
+      background: url('images/event-space.jpg') center/cover fixed;
+      position: relative;
+    }
+    .events-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to right, rgba(20,8,2,0.88) 0%, rgba(20,8,2,0.5) 60%, transparent 100%);
+    }
+    .events-content { position: relative; z-index: 1; max-width: 560px; }
+    .events-content .script { color: var(--gold); font-size: 1.6rem; }
+    .events-content h2 { color: var(--white); margin: 8px 0 20px; }
+    .events-content p { color: rgba(255,255,255,0.75); margin-bottom: 16px; }
+    .events-features { display: flex; flex-direction: column; gap: 10px; margin: 28px 0 36px; }
+    .events-features li {
+      display: flex; align-items: center; gap: 10px;
+      color: rgba(255,255,255,0.8); font-size: 0.9rem;
+    }
+    .events-features li::before { content: '✦'; color: var(--gold); font-size: 0.65rem; }
+
+    /* ── Loyalty CTA ── */
+    .loyalty-cta {
+      background: linear-gradient(135deg, var(--brown-rich), var(--brown-deep));
+      border-radius: var(--radius-xl);
+      padding: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 32px; flex-wrap: wrap;
+      position: relative; overflow: hidden;
+    }
+    .loyalty-cta::before {
+      content: '';
+      position: absolute; top: -60px; right: -60px;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(201,169,110,0.2), transparent 70%);
+      border-radius: 50%;
+    }
+    .loyalty-cta-text .script { font-size: 1.4rem; color: var(--gold); }
+    .loyalty-cta-text h2 { color: var(--white); margin: 8px 0 14px; }
+    .loyalty-cta-text p { color: rgba(255,255,255,0.7); max-width: 440px; }
+    .loyalty-points-preview {
+      display: flex; gap: 24px; flex-shrink: 0; flex-wrap: wrap;
+    }
+    .points-bubble {
+      text-align: center;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(201,169,110,0.3);
+      border-radius: var(--radius-md);
+      padding: 20px 24px;
+      backdrop-filter: blur(8px);
+    }
+    .points-bubble .num { font-family: var(--ff-heading); font-size: 2rem; color: var(--gold); }
+    .points-bubble .lbl { font-size: 0.78rem; color: rgba(255,255,255,0.6); margin-top: 4px; }
+
+    /* ── Blog preview ── */
+    .blog-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+    .blog-date { font-size: 0.78rem; color: var(--text-soft); }
+    .blog-card-title { font-family: var(--ff-heading); font-size: 1.15rem; color: var(--brown-deep); margin-bottom: 8px; }
+    .blog-card-excerpt { font-size: 0.88rem; color: var(--text-soft); }
+    .blog-card-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-top: 16px;
+      font-size: 0.88rem; font-weight: 600;
+      color: var(--brown-rich);
+      transition: var(--transition);
+    }
+    .blog-card-link:hover { gap: 10px; color: var(--gold); }
+  </style>
+</head>
+<body>
+
+  <!-- ── Navigation ───────────────────────── -->
+  <nav id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="Sam's Caffé home">
+        <img src="images/logo.jpg" alt="Sam's Caffé logo" />
+        <div class="nav-logo-text">
+          <span class="brand">Sam's Caffé</span>
+          <span class="sub">Est. Puchong</span>
+        </div>
+      </a>
+      <ul class="nav-links" role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="events.html">Event Space</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button id="langBtn" class="nav-lang-btn" aria-label="Toggle language">BM</button>
+        <a href="../webapp/index.html" class="btn btn-gold nav-cta" id="nav-loyalty-cta">☕ My Points</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+    <a href="index.html">Home</a>
+    <a href="menu.html">Menu</a>
+    <a href="events.html">Event Space</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="about.html">About</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+    <a href="../webapp/index.html" class="btn btn-gold" style="margin-top:8px;justify-content:center;">☕ My Loyalty Points</a>
+  </nav>
+
+  <main>
+    <!-- ── Hero ─────────────────────────────── -->
+    <section class="hero" aria-label="Hero section">
+      <div class="hero-bg"></div>
+      <div class="hero-overlay"></div>
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-eyebrow">
+            <span data-lang="en">Puchong's Favourite Cozy Café</span>
+            <span data-lang="bm">Kafe Kegemaran di Puchong</span>
+          </div>
+          <h1>
+            <span data-lang="en">Where Every Cup<br>Tells a <em>Story</em></span>
+            <span data-lang="bm">Di Mana Setiap Cawan<br>Menceritakan <em>Kisahnya</em></span>
+          </h1>
+          <p>
+            <span data-lang="en">Handcrafted coffee, heartfelt food & warm spaces — made for the moments that matter most.</span>
+            <span data-lang="bm">Kopi buatan tangan, makanan penuh rasa & suasana yang hangat — untuk saat-saat yang paling bermakna.</span>
+          </p>
+          <div class="hero-actions">
+            <a href="menu.html" class="btn btn-gold" id="hero-menu-btn">
+              <span data-lang="en">View Menu</span>
+              <span data-lang="bm">Lihat Menu</span>
+            </a>
+            <a href="events.html" class="btn btn-white" id="hero-events-btn">
+              <span data-lang="en">Book Event Space</span>
+              <span data-lang="bm">Tempah Ruang Acara</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="hero-scroll" aria-hidden="true">Scroll</div>
+    </section>
+
+    <!-- ── Stats Strip ───────────────────────── -->
+    <section class="stats-strip" aria-label="Key statistics">
+      <div class="stats-inner container">
+        <div class="stat-item reveal">
+          <div class="stat-number">5+</div>
+          <div class="stat-label" data-lang="en">Years Serving Puchong</div>
+          <div class="stat-label" data-lang="bm">Tahun Berkhidmat di Puchong</div>
+        </div>
+        <div class="stat-item reveal">
+          <div class="stat-number">50+</div>
+          <div class="stat-label" data-lang="en">Menu Items</div>
+          <div class="stat-label" data-lang="bm">Item Menu</div>
+        </div>
+        <div class="stat-item reveal">
+          <div class="stat-number">80</div>
+          <div class="stat-label" data-lang="en">Seats & Event Space</div>
+          <div class="stat-label" data-lang="bm">Tempat Duduk & Ruang Acara</div>
+        </div>
+        <div class="stat-item reveal">
+          <div class="stat-number">★ 4.7</div>
+          <div class="stat-label" data-lang="en">Google Rating</div>
+          <div class="stat-label" data-lang="bm">Penilaian Google</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── About Snippet ─────────────────────── -->
+    <section class="section" aria-label="About Sam's Caffé">
+      <div class="container">
+        <div class="grid-2" style="align-items:center; gap:64px;">
+          <div class="about-img-wrap reveal-left">
+            <img src="images/hero.jpg" alt="Inside Sam's Caffé" loading="lazy" />
+            <div class="about-badge">
+              <span class="num">5+</span>
+              <span class="label">Years of<br>Warmth</span>
+            </div>
+          </div>
+          <div class="about-text reveal-right">
+            <span class="script">Our Story</span>
+            <h2>
+              <span data-lang="en">More Than a Café — It's Home</span>
+              <span data-lang="bm">Lebih Dari Sebuah Kafe — Ia Adalah Rumah</span>
+            </h2>
+            <p data-lang="en">Nestled in the heart of Puchong, Sam's Caffé was born from a simple dream: to create a place where people come not just for the food, but for the feeling.</p>
+            <p data-lang="bm">Terletak di jantung Puchong, Sam's Caffé lahir dari mimpi yang sederhana: untuk mencipta tempat di mana orang datang bukan hanya untuk makanan, tetapi untuk perasaannya.</p>
+            <ul class="about-checks">
+              <li data-lang="en">Fresh ingredients sourced daily</li>
+              <li data-lang="bm">Bahan-bahan segar dipilih setiap hari</li>
+              <li data-lang="en">Western & Malaysian fusion menu</li>
+              <li data-lang="bm">Menu gabungan Barat & Malaysia</li>
+              <li data-lang="en">Private event space for up to 60 pax</li>
+              <li data-lang="bm">Ruang acara peribadi untuk sehingga 60 orang</li>
+              <li data-lang="en">Loyalty rewards for our regulars</li>
+              <li data-lang="bm">Ganjaran kesetiaan untuk pelanggan setia kami</li>
+            </ul>
+            <a href="about.html" class="btn btn-primary" id="home-about-btn">
+              <span data-lang="en">Our Story</span>
+              <span data-lang="bm">Kisah Kami</span>
+              →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Featured Menu ──────────────────────── -->
+    <section class="section menu-section" aria-label="Featured menu items">
+      <div class="container">
+        <div class="section-header">
+          <span class="script">Chef's Picks</span>
+          <h2>
+            <span data-lang="en">Café Favourites</span>
+            <span data-lang="bm">Kegemaran Kafe</span>
+          </h2>
+          <div class="divider"></div>
+          <p data-lang="en">From rich Malaysian classics to hearty Western mains — something for everyone.</p>
+          <p data-lang="bm">Dari hidangan Malaysia yang kaya hingga mains Barat yang mengenyangkan — ada sesuatu untuk semua orang.</p>
+        </div>
+        <div class="grid-3">
+          <div class="card reveal">
+            <div style="overflow:hidden;">
+              <img class="card-img menu-card-img" src="images/menu-nasilemak.jpg" alt="Nasi Lemak Ayam Goreng" loading="lazy" />
+            </div>
+            <div class="card-body">
+              <span class="card-tag" data-lang="en">Malaysian Classic</span>
+              <span class="card-tag" data-lang="bm">Klasik Malaysia</span>
+              <h3 style="font-size:1.1rem; margin:8px 0 4px;">Nasi Lemak Ayam Goreng</h3>
+              <p class="menu-card-desc" data-lang="en">Fragrant coconut rice with crispy fried chicken, house sambal & condiments</p>
+              <p class="menu-card-desc" data-lang="bm">Nasi lemak wangi dengan ayam goreng rangup, sambal istimewa & kondimen</p>
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-top:16px;">
+                <span class="menu-card-price">RM 18.90</span>
+                <a href="menu.html" class="btn btn-outline" style="padding:8px 18px;font-size:0.82rem;" id="nasi-lemak-menu-link">
+                  <span data-lang="en">See Menu</span>
+                  <span data-lang="bm">Lihat Menu</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="card reveal">
+            <div style="overflow:hidden;">
+              <img class="card-img menu-card-img" src="images/menu-lambchop.jpg" alt="Garlic Rosemary Lamb Chop" loading="lazy" />
+            </div>
+            <div class="card-body">
+              <span class="card-tag" data-lang="en">Western Main</span>
+              <span class="card-tag" data-lang="bm">Hidangan Barat</span>
+              <h3 style="font-size:1.1rem; margin:8px 0 4px;">Garlic & Rosemary Lamb Chop</h3>
+              <p class="menu-card-desc" data-lang="en">Tender lamb chop with herb crust, roasted vegetables & creamy mash</p>
+              <p class="menu-card-desc" data-lang="bm">Lamb chop lembut dengan salutan herba, sayur panggang & mash berkrim</p>
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-top:16px;">
+                <span class="menu-card-price">RM 42.90</span>
+                <a href="menu.html" class="btn btn-outline" style="padding:8px 18px;font-size:0.82rem;" id="lamb-chop-menu-link">
+                  <span data-lang="en">See Menu</span>
+                  <span data-lang="bm">Lihat Menu</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="card reveal">
+            <div style="overflow:hidden;">
+              <img class="card-img menu-card-img" src="images/menu-coffee.jpg" alt="Signature Latte" loading="lazy" />
+            </div>
+            <div class="card-body">
+              <span class="card-tag" data-lang="en">Signature Beverage</span>
+              <span class="card-tag" data-lang="bm">Minuman Istimewa</span>
+              <h3 style="font-size:1.1rem; margin:8px 0 4px;">Sam's Signature Latte</h3>
+              <p class="menu-card-desc" data-lang="en">House-blend espresso with steamed milk & hand-poured latte art</p>
+              <p class="menu-card-desc" data-lang="bm">Espresso campuran istimewa dengan susu stim & seni latte</p>
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-top:16px;">
+                <span class="menu-card-price">RM 14.00</span>
+                <a href="menu.html" class="btn btn-outline" style="padding:8px 18px;font-size:0.82rem;" id="latte-menu-link">
+                  <span data-lang="en">See Menu</span>
+                  <span data-lang="bm">Lihat Menu</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center;margin-top:48px;">
+          <a href="menu.html" class="btn btn-primary" id="home-full-menu-btn">
+            <span data-lang="en">View Full Menu</span>
+            <span data-lang="bm">Lihat Menu Penuh</span>
+            →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Event Space Teaser ─────────────────── -->
+    <section class="events-section section" aria-label="Event space">
+      <div class="events-overlay"></div>
+      <div class="container">
+        <div class="events-content reveal">
+          <span class="script">Host With Us</span>
+          <h2>
+            <span data-lang="en">Your Perfect Event Venue</span>
+            <span data-lang="bm">Tempat Acara Sempurna Anda</span>
+          </h2>
+          <p data-lang="en">Celebrate birthdays, host corporate lunches or intimate gatherings in our beautifully curated space. We handle the setup — you make the memories.</p>
+          <p data-lang="bm">Raikan hari jadi, anjurkan makan tengah hari korporat atau perjumpaan intim di ruang kami yang indah. Kami uruskan persediaan — anda cipta kenangan.</p>
+          <ul class="events-features">
+            <li><span data-lang="en">Up to 60 pax capacity</span><span data-lang="bm">Kapasiti sehingga 60 orang</span></li>
+            <li><span data-lang="en">Custom menu packages available</span><span data-lang="bm">Pakej menu tersuai tersedia</span></li>
+            <li><span data-lang="en">AV equipment & décor setup</span><span data-lang="bm">Peralatan AV & persediaan hiasan</span></li>
+            <li><span data-lang="en">Weekday & weekend slots</span><span data-lang="bm">Slot hari biasa & hujung minggu</span></li>
+          </ul>
+          <a href="events.html" class="btn btn-gold" id="home-events-btn">
+            <span data-lang="en">Enquire About Events</span>
+            <span data-lang="bm">Tanya Tentang Acara</span>
+            →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Loyalty CTA ────────────────────────── -->
+    <section class="section-sm" aria-label="Loyalty programme">
+      <div class="container">
+        <div class="loyalty-cta reveal">
+          <div class="loyalty-cta-text">
+            <span class="script">Rewards for Regulars</span>
+            <h2>
+              <span data-lang="en">Earn Points, Get Free Coffee</span>
+              <span data-lang="bm">Kumpul Mata, Dapatkan Kopi Percuma</span>
+            </h2>
+            <p data-lang="en">Join Sam's Loyalty and earn 1 point for every RM1 spent. Redeem for free drinks, discounts, and exclusive member promos.</p>
+            <p data-lang="bm">Sertai Sam's Loyalty dan kumpul 1 mata bagi setiap RM1 yang dibelanjakan. Tukar untuk minuman percuma, diskaun & promosi eksklusif.</p>
+            <a href="../webapp/index.html" class="btn btn-gold" style="margin-top:28px;" id="home-loyalty-btn">
+              <span data-lang="en">Join Now — It's Free</span>
+              <span data-lang="bm">Sertai Sekarang — Percuma</span>
+            </a>
+          </div>
+          <div class="loyalty-points-preview">
+            <div class="points-bubble">
+              <div class="num">100</div>
+              <div class="lbl" data-lang="en">pts = Free Coffee</div>
+              <div class="lbl" data-lang="bm">pts = Kopi Percuma</div>
+            </div>
+            <div class="points-bubble">
+              <div class="num">250</div>
+              <div class="lbl" data-lang="en">pts = 10% Off</div>
+              <div class="lbl" data-lang="bm">pts = Diskaun 10%</div>
+            </div>
+            <div class="points-bubble">
+              <div class="num">500</div>
+              <div class="lbl" data-lang="en">pts = Free Main</div>
+              <div class="lbl" data-lang="bm">pts = Hidangan Percuma</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Blog Preview ───────────────────────── -->
+    <section class="section" style="background:var(--cream);" aria-label="Latest news">
+      <div class="container">
+        <div class="section-header">
+          <span class="script">Latest News</span>
+          <h2>
+            <span data-lang="en">From the Café</span>
+            <span data-lang="bm">Dari Kafe</span>
+          </h2>
+          <div class="divider"></div>
+        </div>
+        <div class="grid-3">
+          <div class="card reveal">
+            <div class="card-body">
+              <div class="blog-meta">
+                <span class="card-tag" data-lang="en">Events</span>
+                <span class="card-tag" data-lang="bm">Acara</span>
+                <span class="blog-date">Sept 10, 2026</span>
+              </div>
+              <h3 class="blog-card-title" data-lang="en">Our Hari Raya Special Menu is Back!</h3>
+              <h3 class="blog-card-title" data-lang="bm">Menu Khas Hari Raya Kami Sudah Kembali!</h3>
+              <p class="blog-card-excerpt" data-lang="en">Celebrate the festive season with our curated Hari Raya set menus — available for dine-in and private events.</p>
+              <p class="blog-card-excerpt" data-lang="bm">Raikan musim perayaan dengan set menu Hari Raya kami — tersedia untuk makan di sini dan acara persendirian.</p>
+              <a href="blog.html" class="blog-card-link" id="blog1-link">
+                <span data-lang="en">Read More</span>
+                <span data-lang="bm">Baca Lagi</span>
+                →
+              </a>
+            </div>
+          </div>
+          <div class="card reveal">
+            <div class="card-body">
+              <div class="blog-meta">
+                <span class="card-tag" data-lang="en">Loyalty</span>
+                <span class="card-tag" data-lang="bm">Kesetiaan</span>
+                <span class="blog-date">Aug 28, 2026</span>
+              </div>
+              <h3 class="blog-card-title" data-lang="en">Introducing Sam's Loyalty Points!</h3>
+              <h3 class="blog-card-title" data-lang="bm">Memperkenalkan Sam's Loyalty Points!</h3>
+              <p class="blog-card-excerpt" data-lang="en">We've launched our digital loyalty programme. Earn points on every purchase and redeem for amazing rewards.</p>
+              <p class="blog-card-excerpt" data-lang="bm">Kami telah melancarkan program kesetiaan digital. Kumpul mata dengan setiap pembelian dan tukar dengan ganjaran menarik.</p>
+              <a href="blog.html" class="blog-card-link" id="blog2-link">
+                <span data-lang="en">Read More</span>
+                <span data-lang="bm">Baca Lagi</span>
+                →
+              </a>
+            </div>
+          </div>
+          <div class="card reveal">
+            <div class="card-body">
+              <div class="blog-meta">
+                <span class="card-tag" data-lang="en">Menu</span>
+                <span class="card-tag" data-lang="bm">Menu</span>
+                <span class="blog-date">Aug 12, 2026</span>
+              </div>
+              <h3 class="blog-card-title" data-lang="en">New Western Additions to Our Menu</h3>
+              <h3 class="blog-card-title" data-lang="bm">Tambahan Baru Barat di Menu Kami</h3>
+              <p class="blog-card-excerpt" data-lang="en">We've expanded our Western selection with 6 new mains including our fan-favourite Hainanese Chicken Chop.</p>
+              <p class="blog-card-excerpt" data-lang="bm">Kami telah memperluaskan pilihan Barat kami dengan 6 hidangan utama baru termasuk Hainanese Chicken Chop kegemaran.</p>
+              <a href="blog.html" class="blog-card-link" id="blog3-link">
+                <span data-lang="en">Read More</span>
+                <span data-lang="bm">Baca Lagi</span>
+                →
+              </a>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center;margin-top:40px;">
+          <a href="blog.html" class="btn btn-outline" id="home-blog-btn">
+            <span data-lang="en">All Articles</span>
+            <span data-lang="bm">Semua Artikel</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ── Footer ───────────────────────────────── -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo-text">Sam's Caffé</div>
+          <p data-lang="en">Your cozy neighbourhood café in Puchong. Handcrafted coffee, heartfelt food & a warm space for every occasion.</p>
+          <p data-lang="bm">Kafe kejiranan yang selesa di Puchong. Kopi buatan tangan, makanan penuh rasa & suasana hangat untuk setiap majlis.</p>
+          <div class="footer-socials">
+            <a href="#" class="social-icon" aria-label="Facebook">f</a>
+            <a href="#" class="social-icon" aria-label="Instagram">ig</a>
+            <a href="#" class="social-icon" aria-label="TikTok">tt</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4 data-lang="en">Quick Links</h4>
+          <h4 data-lang="bm">Pautan Pantas</h4>
+          <ul>
+            <li><a href="menu.html" data-lang="en">Menu</a><a href="menu.html" data-lang="bm">Menu</a></li>
+            <li><a href="events.html" data-lang="en">Event Space</a><a href="events.html" data-lang="bm">Ruang Acara</a></li>
+            <li><a href="gallery.html" data-lang="en">Gallery</a><a href="gallery.html" data-lang="bm">Galeri</a></li>
+            <li><a href="about.html" data-lang="en">About Us</a><a href="about.html" data-lang="bm">Tentang Kami</a></li>
+            <li><a href="contact.html" data-lang="en">Contact</a><a href="contact.html" data-lang="bm">Hubungi</a></li>
+            <li><a href="../webapp/index.html" data-lang="en">Loyalty Points</a><a href="../webapp/index.html" data-lang="bm">Mata Kesetiaan</a></li>
+          </ul>
+        </div>
+        <div class="footer-col footer-hours">
+          <h4 data-lang="en">Opening Hours</h4>
+          <h4 data-lang="bm">Waktu Buka</h4>
+          <p data-lang="en"><strong>Mon – Fri</strong><br>8:00 AM – 10:00 PM</p>
+          <p data-lang="bm"><strong>Isnin – Jumaat</strong><br>8:00 PG – 10:00 MLM</p>
+          <p style="margin-top:12px;" data-lang="en"><strong>Sat – Sun</strong><br>9:00 AM – 11:00 PM</p>
+          <p style="margin-top:12px;" data-lang="bm"><strong>Sabtu – Ahad</strong><br>9:00 PG – 11:00 MLM</p>
+        </div>
+        <div class="footer-col footer-address">
+          <h4 data-lang="en">Find Us</h4>
+          <h4 data-lang="bm">Lokasi Kami</h4>
+          <p>Taman Puchong Utama,<br>47100 Puchong,<br>Selangor, Malaysia</p>
+          <p style="margin-top:16px;">
+            <a href="tel:+60123456789" style="color:rgba(255,255,255,0.7);">📞 +60 12-345 6789</a>
+          </p>
+          <p>
+            <a href="mailto:hello@samscaffe.com.my" style="color:rgba(255,255,255,0.7);">✉ hello@samscaffe.com.my</a>
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 <span class="gold-text">Sam's Caffé</span>. All rights reserved.</p>
+        <p>Made with ☕ in Puchong</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/60123456789" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

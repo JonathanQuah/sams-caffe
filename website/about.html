@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us | Sam's Caffé Puchong</title>
+  <meta name="description" content="Learn the story behind Sam's Caffé — born in Puchong with a passion for great food, artisan coffee & warm hospitality." />
+  <link rel="icon" href="images/logo.jpg" type="image/jpeg" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .value-card { text-align:center; padding:36px 24px; }
+    .value-icon { font-size:2.8rem; margin-bottom:16px; }
+    .team-card { text-align:center; }
+    .team-avatar { width:100px; height:100px; border-radius:50%; background:var(--cream-dark); margin:0 auto 16px; display:flex; align-items:center; justify-content:center; font-size:2.5rem; }
+    .timeline { position:relative; }
+    .timeline::before { content:''; position:absolute; left:24px; top:0; bottom:0; width:2px; background:var(--cream-dark); }
+    .timeline-item { display:flex; gap:24px; margin-bottom:36px; }
+    .timeline-dot { width:12px; height:12px; min-width:12px; background:var(--gold); border-radius:50%; margin-top:6px; position:relative; z-index:1; box-shadow:0 0 0 4px rgba(201,169,110,0.2); }
+    .timeline-dot-wrap { display:flex; align-items:flex-start; padding-left:18px; }
+    .timeline-year { font-family:var(--ff-heading); color:var(--gold); font-size:1rem; font-weight:700; min-width:48px; padding-top:2px; }
+  </style>
+</head>
+<body>
+  <nav id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo"><img src="images/logo.jpg" alt="Sam's Caffé logo" /><div class="nav-logo-text"><span class="brand">Sam's Caffé</span><span class="sub">Est. Puchong</span></div></a>
+      <ul class="nav-links" role="list"><li><a href="index.html">Home</a></li><li><a href="menu.html">Menu</a></li><li><a href="events.html">Event Space</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="about.html">About</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li></ul>
+      <div class="nav-actions"><button id="langBtn" class="nav-lang-btn">BM</button><a href="../webapp/index.html" class="btn btn-gold nav-cta">☕ My Points</a></div>
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <nav class="mobile-nav" id="mobileNav"><a href="index.html">Home</a><a href="menu.html">Menu</a><a href="events.html">Event Space</a><a href="gallery.html">Gallery</a><a href="about.html">About</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a><a href="../webapp/index.html" class="btn btn-gold" style="margin-top:8px;justify-content:center;">☕ My Loyalty Points</a></nav>
+
+  <section class="page-hero">
+    <div class="page-hero-bg" style="background-image:url('images/gallery-exterior.jpg')"></div>
+    <div class="container page-hero-content">
+      <div class="breadcrumb"><a href="index.html">Home</a> <span>/</span> <span data-lang="en">About Us</span><span data-lang="bm">Tentang Kami</span></div>
+      <span class="script">Our Story</span>
+      <h1 data-lang="en">About Sam's Caffé</h1><h1 data-lang="bm">Tentang Sam's Caffé</h1>
+      <p data-lang="en">A story of passion, coffee & community — rooted in Puchong.</p>
+      <p data-lang="bm">Kisah penuh semangat, kopi & komuniti — berakar di Puchong.</p>
+    </div>
+  </section>
+
+  <main>
+    <!-- Story Section -->
+    <section class="section">
+      <div class="container">
+        <div class="grid-2" style="align-items:center;gap:64px;">
+          <div class="reveal-left">
+            <div style="border-radius:var(--radius-xl);overflow:hidden;aspect-ratio:4/5;box-shadow:var(--shadow-xl);">
+              <img src="images/hero.jpg" alt="Sam's Caffé interior" style="width:100%;height:100%;object-fit:cover;" loading="lazy" />
+            </div>
+          </div>
+          <div class="reveal-right">
+            <span class="script">Where It All Began</span>
+            <h2 style="margin:8px 0 20px;" data-lang="en">Born from a Dream, Built with Heart</h2>
+            <h2 style="margin:8px 0 20px;" data-lang="bm">Lahir dari Impian, Dibina dengan Hati</h2>
+            <p data-lang="en">Sam's Caffé started as a simple idea — create a place in Puchong where the neighbourhood could gather, share a meal, and feel at home. Over the years, it's grown into a beloved local institution.</p>
+            <p data-lang="bm">Sam's Caffé bermula dari idea yang sederhana — mencipta tempat di Puchong di mana jiran-jiran boleh berkumpul, berkongsi hidangan, dan berasa seperti di rumah. Sepanjang tahun, ia telah berkembang menjadi institusi tempatan yang disayangi.</p>
+            <p style="margin-top:16px;" data-lang="en">We believe in cooking with soul — every dish made fresh, every coffee poured with care, and every guest welcomed like a friend.</p>
+            <p style="margin-top:16px;" data-lang="bm">Kami percaya dalam memasak dengan jiwa — setiap hidangan dibuat segar, setiap kopi dituang dengan penuh perhatian, dan setiap tetamu disambut seperti rakan.</p>
+            <div style="display:flex;gap:24px;margin-top:36px;flex-wrap:wrap;">
+              <div style="text-align:center;">
+                <div style="font-family:var(--ff-heading);font-size:2.2rem;color:var(--brown-rich);">5+</div>
+                <div style="font-size:0.8rem;color:var(--text-soft);" data-lang="en">Years in Puchong</div>
+                <div style="font-size:0.8rem;color:var(--text-soft);" data-lang="bm">Tahun di Puchong</div>
+              </div>
+              <div style="text-align:center;">
+                <div style="font-family:var(--ff-heading);font-size:2.2rem;color:var(--brown-rich);">50K+</div>
+                <div style="font-size:0.8rem;color:var(--text-soft);" data-lang="en">Happy Guests</div>
+                <div style="font-size:0.8rem;color:var(--text-soft);" data-lang="bm">Tetamu Gembira</div>
+              </div>
+              <div style="text-align:center;">
+                <div style="font-family:var(--ff-heading);font-size:2.2rem;color:var(--brown-rich);">200+</div>
+                <div style="font-size:0.8rem;color:var(--text-soft);" data-lang="en">Events Hosted</div>
+                <div style="font-size:0.8rem;color:var(--text-soft);" data-lang="bm">Acara Dihoskan</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Values -->
+    <section class="section" style="background:var(--cream);">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="script">Our Values</span>
+          <h2 data-lang="en">What We Stand For</h2><h2 data-lang="bm">Apa Yang Kami Percaya</h2>
+          <div class="divider"></div>
+        </div>
+        <div class="grid-3">
+          <div class="card value-card reveal">
+            <div class="value-icon">☕</div>
+            <h3 data-lang="en">Craft & Quality</h3><h3 data-lang="bm">Kraf & Kualiti</h3>
+            <p data-lang="en">Every coffee is brewed to order. Every dish is prepared fresh. No shortcuts, ever.</p>
+            <p data-lang="bm">Setiap kopi diseduh mengikut pesanan. Setiap hidangan disediakan segar. Tiada jalan singkat.</p>
+          </div>
+          <div class="card value-card reveal">
+            <div class="value-icon">🤝</div>
+            <h3 data-lang="en">Community First</h3><h3 data-lang="bm">Komuniti Dahulu</h3>
+            <p data-lang="en">We support local suppliers, employ from the neighbourhood, and give back to Puchong.</p>
+            <p data-lang="bm">Kami menyokong pembekal tempatan, menggaji dari kejiranan, dan menyumbang kepada Puchong.</p>
+          </div>
+          <div class="card value-card reveal">
+            <div class="value-icon">🌿</div>
+            <h3 data-lang="en">Sustainability</h3><h3 data-lang="bm">Kemampanan</h3>
+            <p data-lang="en">Compostable packaging, daily food waste donation, and energy-efficient operations.</p>
+            <p data-lang="bm">Pembungkusan boleh kompos, derma sisa makanan harian, dan operasi cekap tenaga.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="section">
+      <div class="container" style="max-width:720px;">
+        <div class="section-header reveal">
+          <span class="script">Our Journey</span>
+          <h2 data-lang="en">The Sam's Caffé Story</h2><h2 data-lang="bm">Kisah Sam's Caffé</h2>
+          <div class="divider"></div>
+        </div>
+        <div class="timeline reveal">
+          <div class="timeline-item">
+            <div class="timeline-dot-wrap"><div class="timeline-dot"></div></div>
+            <div>
+              <div class="timeline-year">2020</div>
+              <h4 data-lang="en">The Doors Open</h4><h4 data-lang="bm">Pintu Dibuka</h4>
+              <p data-lang="en">Sam's Caffé opens in Taman Puchong Utama — a cozy 30-seater with a simple menu and big dreams.</p>
+              <p data-lang="bm">Sam's Caffé dibuka di Taman Puchong Utama — 30 tempat duduk yang selesa dengan menu ringkas dan impian besar.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot-wrap"><div class="timeline-dot"></div></div>
+            <div>
+              <div class="timeline-year">2021</div>
+              <h4 data-lang="en">Expanding the Menu</h4><h4 data-lang="bm">Mengembangkan Menu</h4>
+              <p data-lang="en">We added our Western mains — Lamb Chop, Chicken Chop & Pasta — and became a local favourite overnight.</p>
+              <p data-lang="bm">Kami menambah hidangan utama Barat — Lamb Chop, Chicken Chop & Pasta — dan menjadi kegemaran tempatan.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot-wrap"><div class="timeline-dot"></div></div>
+            <div>
+              <div class="timeline-year">2023</div>
+              <h4 data-lang="en">The Event Space Launches</h4><h4 data-lang="bm">Ruang Acara Dilancarkan</h4>
+              <p data-lang="en">We renovated and opened a private event space for up to 60 pax — birthdays, corporates & celebrations.</p>
+              <p data-lang="bm">Kami merenovasi dan membuka ruang acara peribadi untuk sehingga 60 orang.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot-wrap"><div class="timeline-dot"></div></div>
+            <div>
+              <div class="timeline-year">2026</div>
+              <h4 data-lang="en">Sam's Loyalty Launches</h4><h4 data-lang="bm">Sam's Loyalty Dilancarkan</h4>
+              <p data-lang="en">Our digital loyalty programme goes live — rewarding our regulars with every cup and every meal.</p>
+              <p data-lang="bm">Program kesetiaan digital kami dilancarkan — memberi ganjaran kepada pelanggan setia kami.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section-sm" style="background:var(--brown-deep);text-align:center;">
+      <div class="container">
+        <span class="script" style="color:var(--gold);font-size:1.6rem;display:block;margin-bottom:12px;">Come Visit Us</span>
+        <h2 style="color:var(--white);margin-bottom:16px;" data-lang="en">We'd Love to See You</h2>
+        <h2 style="color:var(--white);margin-bottom:16px;" data-lang="bm">Kami Ingin Bertemu Anda</h2>
+        <p style="color:rgba(255,255,255,0.65);max-width:480px;margin:0 auto 36px;" data-lang="en">Whether it's a solo coffee, a family lunch or an event — there's always a seat for you at Sam's.</p>
+        <p style="color:rgba(255,255,255,0.65);max-width:480px;margin:0 auto 36px;" data-lang="bm">Sama ada kopi solo, makan tengah hari keluarga atau acara — sentiasa ada tempat untuk anda di Sam's.</p>
+        <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+          <a href="contact.html" class="btn btn-gold" id="about-contact-btn"><span data-lang="en">Get Directions</span><span data-lang="bm">Dapatkan Arah</span></a>
+          <a href="../webapp/index.html" class="btn btn-white btn-outline" style="border-color:rgba(255,255,255,0.3);color:rgba(255,255,255,0.8);" id="about-loyalty-btn"><span data-lang="en">Join Loyalty</span><span data-lang="bm">Sertai Kesetiaan</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container"><div class="footer-bottom" style="border-top:none;padding:32px 0;">
+      <p>© 2026 <span class="gold-text">Sam's Caffé</span>. All rights reserved.</p>
+    </div></div>
+  </footer>
+  <a href="https://wa.me/60123456789" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+  <script src="js/main.js"></script>
+</body>
+</html>
