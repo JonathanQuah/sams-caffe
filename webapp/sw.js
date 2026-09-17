@@ -1,10 +1,14 @@
-const CACHE_NAME = 'sams-loyalty-v1';
+const CACHE_NAME = 'sams-loyalty-v2';
 const CACHE_URLS = [
-  '/webapp/index.html',
-  '/webapp/css/style.css',
-  '/webapp/js/app.js',
-  '/webapp/images/logo.jpg',
-  '/webapp/manifest.json'
+  './index.html',
+  './css/style.css',
+  './js/app.js',
+  './images/logo.png',
+  './images/logo.jpg',
+  './images/icon-192.png',
+  './images/icon-512.png',
+  './favicon-32x32.png',
+  './manifest.json'
 ];
 
 // Install: cache core assets
